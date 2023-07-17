@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+}
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: antiquewhite;
+    box-sizing: border-box;
+}
+
+.Header {
+    display: flex;
+    gap: 10px;
+    background-color: rgba(255,0,0,0.1);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 16px rgba(0,0,0,0.1);
+
+    nav {
+        display: inherit;
+        gap: inherit;
+        a {
+            color: #444;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+            
+            &.active {
+                color: darkred;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.Footer {
+    margin-top: auto;
+    text-align: center;
+    background-color: rgba(255,0,0,0.1);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 16px rgba(0,0,0,0.1);
+}
+
+.Main {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: rgba(255,255,255, .7);
+    box-shadow: 0 0 16px rgba(0,0,0,0.1);
+} 
