@@ -21,7 +21,7 @@ app.use("/auth", authRouter);
 app.use("/categories", categoriesRouter);
 app.use("/products", productsRouter);
 
-app.all("/", express.static(path.resolve(__dirname, "../frontend/build")));
+app.use("/", express.static(path.resolve(__dirname, "../frontend/build")));
 
 
 app.listen(9090, () => console.log("Server was run!"));
