@@ -19,7 +19,7 @@ export default function ProductListPage() {
                 <ul>
                     {products.map(({id, title, price, image}) => (
                         <li>
-                            <a href={`/product/${id}`}>
+                            <a href={`/list-product/${id}`}>
                                 <img src={image} width={100} />
                                 <b>{title}</b>
                                 <small>{price}</small>

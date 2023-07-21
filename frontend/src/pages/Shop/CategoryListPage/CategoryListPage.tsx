@@ -17,7 +17,7 @@ export default function CategoryListPage() {
                 <ul>
                     {categories.map(({id, title}) => (
                         <li>
-                            <a href={`/products/${id}`}>{title}</a>
+                            <a href={`/list-products/${id}`}>{title}</a>
                         </li>
                     ))}
                 </ul>
