@@ -21,9 +21,10 @@ app.use("/auth", authRouter);
 app.use("/categories", categoriesRouter);
 app.use("/products", productsRouter);
 
-app.use(express.static("/var/task/frontend/build"));
-// app.get('*', (req, res) => res.sendFile(('/var/task/frontend/build/index.html')));
-
+app.use(express.static(path.resolve(__dirname, "../frontend/build")));
+app.get('*', function (req, res) {
+  res.sendFile(path.resolve(__dirname, "../frontend/build"+req.path));
+ });
 
 app.listen(9090, () => console.log("Server was run!"));
 
