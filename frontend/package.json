@@ -12,8 +12,9 @@
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4"    
   },
+  "proxy": "https://naughty-khakis-hen.cyclic.app",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build"
