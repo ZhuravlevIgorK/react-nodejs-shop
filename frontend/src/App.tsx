@@ -18,9 +18,9 @@ import ProductPage from './pages/Shop/ProductPage/ProductPage';
 export const PATH = {
   SHOP: {
     HOME: "/home",
-    CATEGORIES: "/categories",
-    PRODUCTS: "/products/:categoryId",
-    PRODUCT: "/product/:productId",
+    CATEGORIES: "/list-categories",
+    PRODUCTS: "/list-products/:categoryId",
+    PRODUCT: "/list-product/:productId",
     GUARANTES: "/guarantes",
     ABOUT: "/about",
     CONTACTS: "/contacts",
