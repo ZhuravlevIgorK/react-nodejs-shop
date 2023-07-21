@@ -21,10 +21,14 @@ app.use("/auth", authRouter);
 app.use("/categories", categoriesRouter);
 app.use("/products", productsRouter);
 
-app.use(express.static(path.resolve(__dirname, "../frontend/build")));
-app.get('/', function (req, res) {
-  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
- });
+const buildPath = path.normalize(path.join(__dirname, '../frontend/build'));
+app.use(express.static(buildPath));
+const rootRouter = express.Router();
+rootRouter.get('(/*)?', async (req, res, next) => {
+  res.sendFile(path.join(buildPath, 'index.html'));
+});
+app.use(rootRouter)
+
 
 app.listen(9090, () => console.log("Server was run!"));
 
