@@ -22,7 +22,7 @@ app.use("/categories", categoriesRouter);
 app.use("/products", productsRouter);
 
 app.use(express.static("/var/task/frontend/build"));
-app.get('*', (req, res) => res.sendFile(('/var/task/frontend/build/index.html')));
+// app.get('*', (req, res) => res.sendFile(('/var/task/frontend/build/index.html')));
 
 
 app.listen(9090, () => console.log("Server was run!"));
