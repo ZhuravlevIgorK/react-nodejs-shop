@@ -7,7 +7,7 @@ export default function CategoryListPage() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:9090/categories").then((res) => setCategories(res.data));
+        axios.get(`${process.env.REACT_APP_BACKEND}/categories`).then((res) => setCategories(res.data));
     }, []);
 
     return (

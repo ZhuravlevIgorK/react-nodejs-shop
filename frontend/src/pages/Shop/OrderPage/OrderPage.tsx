@@ -31,7 +31,7 @@ export default function OrderPage() {
             setProducts([]);
             let tempProducts: IProductBasket[] = [];
             for (let row of basket) {
-                const res = await axios.get(`http://localhost:9090/products/${row.id}`);
+                const res = await axios.get(`${process.env.REACT_APP_BACKEND}/products/${row.id}`);
                 tempProducts.push({...res.data, count: row.count});
             }
  

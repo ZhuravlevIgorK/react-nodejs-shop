@@ -9,7 +9,7 @@ export default function ProductListPage() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:9090/products?categoryId=${categoryId}`).then((res) => setProducts(res.data));
+        axios.get(`${process.env.REACT_APP_BACKEND}/products?categoryId=${categoryId}`).then((res) => setProducts(res.data));
     }, [])
 
     return (

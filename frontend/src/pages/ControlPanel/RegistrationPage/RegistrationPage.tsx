@@ -48,7 +48,7 @@ export default function RegistrationPage() {
                     onClick={async () => {
                         setMessageError("");
                         try {
-                            const res = await axios.post("http://localhost:9090/auth/register", {login: login, password: password, email: email});
+                            const res = await axios.post(`${process.env.REACT_APP_BACKEND}/auth/register`, {login: login, password: password, email: email});
                             navigate("/authorization", {replace: true});
                         } catch (error: any) {
                             setMessageError(error.response?.data.message || error.message);

@@ -41,7 +41,7 @@ export default function AuthorizationPage() {
                     onClick={async () => {
                         setMessageError("");
                         try {
-                            const res = await axios.post("http://localhost:9090/auth/sign-in", {login: login, password: password});
+                            const res = await axios.post(`${process.env.REACT_APP_BACKEND}/auth/sign-in`, {login: login, password: password});
                             localStorage.setItem("isAuth", "true");
                             localStorage.setItem("timestamp", new Date().toLocaleString());
                             navigate(PATH.CONTROL_PANEL.CATEGORIES, {replace: true});

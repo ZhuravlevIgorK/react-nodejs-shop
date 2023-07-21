@@ -12,7 +12,7 @@ export default function CategoriesPage() {
     const [valueNewCategory, setValueNewCategory] = useState("");
 
     useEffect(() => {
-        axios.get("http://localhost:9090/categories").then((res) => setCategories(res.data))
+        axios.get(`${process.env.REACT_APP_BACKEND}/categories`).then((res) => setCategories(res.data))
     }, [timestamp]);
 
     return (
@@ -40,7 +40,7 @@ export default function CategoriesPage() {
                                 <Button onClick={() => {
                                     const newTitle = window.prompt("Ввдение название категории", title);
                                     if (newTitle) {
-                                        axios.patch("http://localhost:9090/categories", {id: id, title: newTitle})
+                                        axios.patch(`${process.env.REACT_APP_BACKEND}/categories`, {id: id, title: newTitle})
                                             .then((res) => setTimestamp(new Date().getTime()))
                                             .catch((error) => window.alert(error.response.data));
                                     }
@@ -53,7 +53,7 @@ export default function CategoriesPage() {
                                 <Button onClick={() => {
                                     const isAccept = window.confirm(`Удалить категории: ${title}?`);
                                     if (isAccept) {
-                                        axios.delete(`http://localhost:9090/categories/${id}`)
+                                        axios.delete(`${process.env.REACT_APP_BACKEND}/categories/${id}`)
                                             .then((res) => setTimestamp(new Date().getTime()))
                                             .catch((error) => window.alert(error.response.data));
                                     }
@@ -80,7 +80,7 @@ export default function CategoriesPage() {
                     type="button"
                     onClick={() => {
                         if (valueNewCategory.length > 0) {
-                            axios.post(`http://localhost:9090/categories`, {title: valueNewCategory})
+                            axios.post(`${process.env.REACT_APP_BACKEND}/categories`, {title: valueNewCategory})
                                 .then((res) => setTimestamp(new Date().getTime()))
                                 .catch((error) => window.alert(error.response.data));
                         }

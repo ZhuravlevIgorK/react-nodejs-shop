@@ -25,7 +25,7 @@ export default function ProductPage() {
     const [count, setCount] = useState(1);
 
     useEffect(() => {
-        axios.get(`http://localhost:9090/products/${productId}`).then((res) => setProduct(res.data));
+        axios.get(`${process.env.REACT_APP_BACKEND}/products/${productId}`).then((res) => setProduct(res.data));
     }, []);
 
     return (

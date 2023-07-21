@@ -22,14 +22,14 @@ export default function ProductsPage() {
     const [valueEditPrice, setValueEditPrice] = useState(0);
 
     useEffect(() => {
-        axios.get("http://localhost:9090/categories").then((res) => {
+        axios.get(`${process.env.REACT_APP_BACKEND}/categories`).then((res) => {
             setCategories(res.data);
             if (res.data.length > 0) setCategoryId(res.data[0].id);
         });
     }, []);
 
     useEffect(() => {
-        axios.get(`http://localhost:9090/products?categoryId=${categoryId}`).then((res) => setProducts(res.data));
+        axios.get(`${process.env.REACT_APP_BACKEND}/products?categoryId=${categoryId}`).then((res) => setProducts(res.data));
     }, [timestamp, categoryId]);
 
     return (
@@ -84,7 +84,7 @@ export default function ProductsPage() {
                                 <Button onClick={() => {
                                     const isAccept = window.confirm(`Удалить категории: ${title}?`);
                                     if (isAccept) {
-                                        axios.delete(`http://localhost:9090/products/${id}`)
+                                        axios.delete(`${process.env.REACT_APP_BACKEND}/products/${id}`)
                                             .then((res) => setTimestamp(new Date().getTime()))
                                             .catch((error) => window.alert(error.response.data));
                                     }
@@ -128,7 +128,7 @@ export default function ProductsPage() {
                     type="button"
                     onClick={() => {
                         if (valueNewTitle.length > 0) {
-                            axios.post(`http://localhost:9090/products`, {categoryId, title: valueNewTitle, image: valueNewUrlImage, price: valueNewPrice})
+                            axios.post(`${process.env.REACT_APP_BACKEND}/products`, {categoryId, title: valueNewTitle, image: valueNewUrlImage, price: valueNewPrice})
                                 .then((res) => {
                                     setValueNewTitle("")
                                     setValueNewUrlImage("")
@@ -173,7 +173,7 @@ export default function ProductsPage() {
                         type="button"
                         onClick={() => {
                             if (valueEditTitle.length > 0) {
-                                axios.patch(`http://localhost:9090/products`, {categoryId, id, title: valueEditTitle, image: valueEditUrlImage, price: valueEditPrice})
+                                axios.patch(`${process.env.REACT_APP_BACKEND}/products`, {categoryId, id, title: valueEditTitle, image: valueEditUrlImage, price: valueEditPrice})
                                     .then((res) => {
                                         setTimestamp(new Date().getTime())
                                     })
