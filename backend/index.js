@@ -21,7 +21,7 @@ app.use("/auth", authRouter);
 app.use("/categories", categoriesRouter);
 app.use("/products", productsRouter);
 
-app.use(express.static(path.resolve(__dirname, "/var/task/frontend/build")));
+app.use(express.static("/var/task/frontend/build"));
 app.get('*', (req, res) => res.sendFile(('/var/task/frontend/build/index.html')));
 
 
