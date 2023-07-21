@@ -4,8 +4,9 @@
   "description": "", 
   "main": "index.js",
   "scripts": { 
-    "install": "npm i && npm i --prefix ./frontend && npm i --prefix ./backend",
-    "start": "npm run build --prefix ./frontend && npm run start --prefix ./frontend",
+    "install": "cd ./frontend && npm i && cd ../backend && npm i",
+    "build": "npm run build --prefix ./frontend",
+    "start": "npm run start --prefix ./backend",
     "dev": "concurrently \"npm run start --prefix ./backend\" \"npm run start --prefix ./frontend\""
   },
   "repository": {
