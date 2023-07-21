@@ -22,6 +22,7 @@ app.use("/categories", categoriesRouter);
 app.use("/products", productsRouter);
 
 app.use(express.static(path.resolve(__dirname, "../frontend/build")));
+app.get('*', (req, res) => res.sendFile(('../frontend/build/index.html')));
 
 
 app.listen(9090, () => console.log("Server was run!"));
