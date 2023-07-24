@@ -18,7 +18,7 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-// app.use("/*", express.static(path.resolve(__dirname, "../frontend/build")));
+app.use("/", express.static("frontend/build"));
 // app.get('*', function (req, res) {
 //   const filepath = path.resolve(__dirname, "../frontend/build"+req.path);
 //   if (fs.existsSync(filepath)) {
@@ -27,17 +27,17 @@ app.use(express.urlencoded({
 //   } 
 //   res.sendFile(path.resolve(__dirname, "../frontend/build"));
 // });
-app.use("/*", (req, res, next) => {
-  const filepath = path.resolve(__dirname, "../frontend/build"+req.path);
-  console.log("!!!filepath =", filepath)
-  try {
-    console.log("!!! Существует")
-    return res.sendFile(filepath);
-  } catch (e) {
-    console.log("!!! next()")
-    next();
-  }
-});
+// app.use("/*", (req, res, next) => {
+//   const filepath = path.resolve(__dirname, "../frontend/build"+req.path);
+//   console.log("!!!filepath =", filepath)
+//   try {
+//     console.log("!!! Существует")
+//     return res.sendFile(filepath);
+//   } catch (e) {
+//     console.log("!!! next()")
+//     next();
+//   }
+// });
 
 
 app.use("/auth", authRouter);
@@ -45,7 +45,6 @@ app.use("/categories", categoriesRouter);
 app.use("/products", productsRouter);
 
 
-
- app.listen(9090, () => console.log("Server was run!"));
+app.listen(9090, () => console.log("Server was run!"));
 
 export default app;
