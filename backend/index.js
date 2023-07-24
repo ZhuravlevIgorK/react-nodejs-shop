@@ -28,6 +28,7 @@ app.get('*', function (req, res) {
   const filepath = path.resolve(__dirname, "../frontend/build"+req.path);
   if (fs.existsSync(filepath)) {
     res.sendFile(filepath);
+    // Test
   } 
   res.sendFile(path.resolve(__dirname, "../frontend/build"));
  });
