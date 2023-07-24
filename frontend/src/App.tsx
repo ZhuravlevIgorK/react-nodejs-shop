@@ -1,19 +1,20 @@
-import CategoriesPage from 'pages/ControlPanel/CategoriesPage/CategoriesPage';
-import ProductsPage from 'pages/ControlPanel/ProductsPage/ProductsPage';
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import {BrowserRouter, Route, Routes, Navigate, useNavigate} from "react-router-dom"
-import AuthorizationPage from './pages/ControlPanel/AuthorizationPage/AuthorizationPage';
-import RegistrationPage from './pages/ControlPanel/RegistrationPage/RegistrationPage';
-import AboutPage from './pages/Shop/AboutPage/AboutPage';
-import BasketPage from './pages/Shop/BasketPage/BasketPage';
-import CategoryListPage from './pages/Shop/CategoryListPage/CategoryListPage';
-import ContactsPage from './pages/Shop/ContactsPage/ContactsPage';
-import GuaranteesPage from './pages/Shop/GuaranteesPage/GuaranteesPage';
-import HomePage from './pages/Shop/HomePage/HomePage';
-import NotFound404Page from './pages/Shop/NotFound404Page/NotFound404Page';
-import OrderPage from './pages/Shop/OrderPage/OrderPage';
-import ProductListPage from './pages/Shop/ProductListPage/ProductListPage';
-import ProductPage from './pages/Shop/ProductPage/ProductPage';
+
+const CategoriesPage = lazy(() => import("pages/ControlPanel/CategoriesPage/CategoriesPage"))
+const ProductsPage = lazy(() => import("pages/ControlPanel/ProductsPage/ProductsPage"))
+const AuthorizationPage = lazy(() => import("pages/ControlPanel/AuthorizationPage/AuthorizationPage"))
+const RegistrationPage = lazy(() => import("pages/ControlPanel/RegistrationPage/RegistrationPage"))
+const AboutPage = lazy(() => import("pages/Shop/AboutPage/AboutPage"))
+const BasketPage = lazy(() => import("pages/Shop/BasketPage/BasketPage"))
+const CategoryListPage = lazy(() => import("pages/Shop/CategoryListPage/CategoryListPage"))
+const ContactsPage = lazy(() => import("pages/Shop/ContactsPage/ContactsPage"))
+const GuaranteesPage = lazy(() => import("pages/Shop/GuaranteesPage/GuaranteesPage"))
+const HomePage = lazy(() => import("pages/Shop/HomePage/HomePage"))
+const NotFound404Page = lazy(() => import("pages/Shop/NotFound404Page/NotFound404Page"))
+const OrderPage = lazy(() => import("pages/Shop/OrderPage/OrderPage"))
+const ProductListPage = lazy(() => import("pages/Shop/ProductListPage/ProductListPage"))
+const ProductPage = lazy(() => import("pages/Shop/ProductPage/ProductPage"))
 
 export const PATH = {
   SHOP: {
@@ -42,6 +43,7 @@ function App() {
   const isAuth = localStorage.getItem("isAuth");
 
   return (
+    <Suspense fallback={"Идет загрузка страниц..."}>
       <Routes>
         {/* Админ панель */}
         <Route path={PATH.CONTROL_PANEL.AUTH} element={<AuthorizationPage />} />
@@ -67,6 +69,7 @@ function App() {
 
         <Route path="*" element={<NotFound404Page />} />
       </Routes>
+    </Suspense>
   );
 }
 
