@@ -26,7 +26,7 @@ app.get('*', function (req, res) {
     // Test
   } 
   res.sendFile(path.resolve(__dirname, "../frontend/build"));
- });
+});
 
 app.use("/auth", authRouter);
 app.use("/categories", categoriesRouter);
