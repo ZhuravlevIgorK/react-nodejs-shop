@@ -18,11 +18,6 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-
-app.use("/auth", authRouter);
-app.use("/categories", categoriesRouter);
-app.use("/products", productsRouter);
-
 app.use("/", express.static(path.resolve(__dirname, "../frontend/build")));
 app.get('*', function (req, res) {
   const filepath = path.resolve(__dirname, "../frontend/build"+req.path);
@@ -32,6 +27,12 @@ app.get('*', function (req, res) {
   } 
   res.sendFile(path.resolve(__dirname, "../frontend/build"));
  });
+
+app.use("/auth", authRouter);
+app.use("/categories", categoriesRouter);
+app.use("/products", productsRouter);
+
+
 
  app.listen(9090, () => console.log("Server was run!"));
 
