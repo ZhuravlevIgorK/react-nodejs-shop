@@ -18,15 +18,23 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-app.use("/*", express.static(path.resolve(__dirname, "../frontend/build")));
-app.get('*', function (req, res) {
+// app.use("/*", express.static(path.resolve(__dirname, "../frontend/build")));
+// app.get('*', function (req, res) {
+//   const filepath = path.resolve(__dirname, "../frontend/build"+req.path);
+//   if (fs.existsSync(filepath)) {
+//     res.sendFile(filepath);
+//     // Test
+//   } 
+//   res.sendFile(path.resolve(__dirname, "../frontend/build"));
+// });
+app.use("/*", (req, res, next) => {
   const filepath = path.resolve(__dirname, "../frontend/build"+req.path);
   if (fs.existsSync(filepath)) {
-    res.sendFile(filepath);
-    // Test
+    return res.sendFile(filepath);
   } 
-  res.sendFile(path.resolve(__dirname, "../frontend/build"));
-});
+  next();
+})
+
 
 app.use("/auth", authRouter);
 app.use("/categories", categoriesRouter);
