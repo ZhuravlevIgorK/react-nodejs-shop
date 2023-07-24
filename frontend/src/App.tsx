@@ -43,7 +43,7 @@ function App() {
   const isAuth = localStorage.getItem("isAuth");
 
   return (
-    <Suspense fallback={"Идет загрузка страниц..."}>
+    <Suspense fallback={"Идет загрузка страницы..."}>
       <Routes>
         {/* Админ панель */}
         <Route path={PATH.CONTROL_PANEL.AUTH} element={<AuthorizationPage />} />
