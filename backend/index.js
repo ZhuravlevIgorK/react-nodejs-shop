@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from 'url';
 import authRouter from "./routes/auth.js";
@@ -23,10 +24,14 @@ app.use("/categories", categoriesRouter);
 app.use("/products", productsRouter);
 
 app.use("/", express.static(path.resolve(__dirname, "../frontend/build")));
-// app.get('*', function (req, res) {
-//   res.sendFile(path.resolve(__dirname, "../frontend/build"+req.path));
-//  });
+app.get('*', function (req, res) {
+  const filepath = path.resolve(__dirname, "../frontend/build"+req.path);
+  if (fs.existsSync(filepath)) {
+    res.sendFile(filepath);
+  } 
+  res.sendFile(path.resolve(__dirname, "../frontend/build"));
+ });
 
-app.listen(9090, () => console.log("Server was run!"));
+ app.listen(9090, () => console.log("Server was run!"));
 
 export default app;
