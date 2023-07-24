@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import TemplateShopPage from "../../../components/TemplateShopPage/TemplateShopPage";
 
 export default function ProductListPage() {
@@ -19,11 +19,11 @@ export default function ProductListPage() {
                 <ul>
                     {products.map(({id, title, price, image}) => (
                         <li>
-                            <a href={`/list-product/${id}`}>
+                            <NavLink to={`/list-product/${id}`}>
                                 <img src={image} width={100} />
                                 <b>{title}</b>
                                 <small>{price}</small>
-                            </a>
+                            </NavLink>
                         </li>
                     ))}
                 </ul>

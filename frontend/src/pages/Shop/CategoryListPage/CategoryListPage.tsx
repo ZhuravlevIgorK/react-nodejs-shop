@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import TemplateShopPage from "components/TemplateShopPage/TemplateShopPage";
+import { NavLink } from "react-router-dom";
 
 
 export default function CategoryListPage() {
@@ -17,7 +18,7 @@ export default function CategoryListPage() {
                 <ul>
                     {categories.map(({id, title}) => (
                         <li>
-                            <a href={`/list-products/${id}`}>{title}</a>
+                            <NavLink to={`/list-products/${id}`}>{title}</NavLink>
                         </li>
                     ))}
                 </ul>
