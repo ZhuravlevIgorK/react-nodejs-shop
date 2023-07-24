@@ -29,9 +29,12 @@ app.use(express.urlencoded({
 // });
 app.use("/*", (req, res, next) => {
   const filepath = path.resolve(__dirname, "../frontend/build"+req.path);
+  console.log("!!!filepath =", filepath)
   if (fs.existsSync(filepath)) {
+    console.log("!!! Существует")
     return res.sendFile(filepath);
   } 
+  console.log("!!! next()")
   next();
 })
 
