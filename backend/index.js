@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import fs from "fs";
 import path from "path";
 import { fileURLToPath } from 'url';
 import authRouter from "./routes/auth.js";
@@ -18,32 +17,14 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-app.use("/", express.static("frontend/build"));
-// app.get('*', function (req, res) {
-//   const filepath = path.resolve(__dirname, "../frontend/build"+req.path);
-//   if (fs.existsSync(filepath)) {
-//     res.sendFile(filepath);
-//     // Test
-//   } 
-//   res.sendFile(path.resolve(__dirname, "../frontend/build"));
-// });
-// app.use("/*", (req, res, next) => {
-//   const filepath = path.resolve(__dirname, "../frontend/build"+req.path);
-//   console.log("!!!filepath =", filepath)
-//   try {
-//     console.log("!!! Существует")
-//     return res.sendFile(filepath);
-//   } catch (e) {
-//     console.log("!!! next()")
-//     next();
-//   }
-// });
-
-
 app.use("/auth", authRouter);
 app.use("/categories", categoriesRouter);
 app.use("/products", productsRouter);
 
+app.use('/static', express.static(path.resolve(__dirname, '../frontend/build/static')));
+app.get('*', function(req, res) {
+  res.sendFile('index.html', {root: path.resolve(__dirname, '../frontend/build')});
+});
 
 app.listen(9090, () => console.log("Server was run!"));
 
