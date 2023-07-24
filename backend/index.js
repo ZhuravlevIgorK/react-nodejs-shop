@@ -18,7 +18,7 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-app.use("/", express.static(path.resolve(__dirname, "../frontend/build")));
+app.use("/*", express.static(path.resolve(__dirname, "../frontend/build")));
 app.get('*', function (req, res) {
   const filepath = path.resolve(__dirname, "../frontend/build"+req.path);
   if (fs.existsSync(filepath)) {
