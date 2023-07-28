@@ -3,6 +3,7 @@ import Button from "components/Button/Button";
 import Form from "components/Form/Form";
 import FormInput from "components/FormInput/FormInput";
 import TemplateControlPanelPage from "components/TemplateControlPanelPage/TemplateControlPanelPage";
+import { useBasketContext } from "context/BasketProvider";
 import React, { useEffect, useState } from "react";
 
 export default function CategoriesPage() {

@@ -2,6 +2,7 @@ import { PATH } from 'global-config';
 import React, { lazy, Suspense, useEffect } from 'react';
 import {BrowserRouter, Route, Routes, Navigate, useNavigate} from "react-router-dom"
 
+// Импорт страниц, способом ленивой загрузки (для уменьшения конечного bundle.js)
 const CategoriesPage = lazy(() => import("pages/ControlPanel/CategoriesPage/CategoriesPage"))
 const ProductsPage = lazy(() => import("pages/ControlPanel/ProductsPage/ProductsPage"))
 const AuthorizationPage = lazy(() => import("pages/ControlPanel/AuthorizationPage/AuthorizationPage"))
@@ -18,7 +19,7 @@ const ProductListPage = lazy(() => import("pages/Shop/ProductListPage/ProductLis
 const ProductPage = lazy(() => import("pages/Shop/ProductPage/ProductPage"))
 
 function App() {
-  const isAuth = localStorage.getItem("isAuth");
+  const isAuth = localStorage.getItem("isAuth"); // сохраняем флаг авторизации в хранилище браузера, для того, что не авторизовываться повторно при каждом посещении страницы
 
   return (
     <Suspense fallback={"Идет загрузка страницы..."}>
