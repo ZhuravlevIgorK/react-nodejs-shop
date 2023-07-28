@@ -1,6 +1,8 @@
+import { PATH } from 'global-config';
 import React, { lazy, Suspense, useEffect } from 'react';
 import {BrowserRouter, Route, Routes, Navigate, useNavigate} from "react-router-dom"
 
+// Импорт страниц, способом ленивой загрузки (для уменьшения конечного bundle.js)
 const CategoriesPage = lazy(() => import("pages/ControlPanel/CategoriesPage/CategoriesPage"))
 const ProductsPage = lazy(() => import("pages/ControlPanel/ProductsPage/ProductsPage"))
 const AuthorizationPage = lazy(() => import("pages/ControlPanel/AuthorizationPage/AuthorizationPage"))
@@ -16,31 +18,8 @@ const OrderPage = lazy(() => import("pages/Shop/OrderPage/OrderPage"))
 const ProductListPage = lazy(() => import("pages/Shop/ProductListPage/ProductListPage"))
 const ProductPage = lazy(() => import("pages/Shop/ProductPage/ProductPage"))
 
-export const PATH = {
-  SHOP: {
-    HOME: "/home",
-    CATEGORIES: "/list-categories",
-    PRODUCTS: "/list-products/:categoryId",
-    PRODUCT: "/list-product/:productId",
-    GUARANTES: "/guarantes",
-    ABOUT: "/about",
-    CONTACTS: "/contacts",
-    BASKET: "/basket",
-    ORDER: "/order",
-  },
-
-  CONTROL_PANEL: {
-    AUTH: "/control-panel/authorization",
-    REGISTRATION: "/control-panel/registration",
-    CATEGORIES: "/control-panel/categories",
-    PRODUCTS: "/control-panel/products",
-  }  
-  
-}
-
-
 function App() {
-  const isAuth = localStorage.getItem("isAuth");
+  const isAuth = localStorage.getItem("isAuth"); // сохраняем флаг авторизации в хранилище браузера, для того, что не авторизовываться повторно при каждом посещении страницы
 
   return (
     <Suspense fallback={"Идет загрузка страницы..."}>

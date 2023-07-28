@@ -5,7 +5,7 @@ import axios, { AxiosError } from "axios"
 import React, { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TemplateControlPanelPage from "components/TemplateControlPanelPage/TemplateControlPanelPage";
-import { PATH } from "App";
+import { PATH } from "global-config";
 
 export default function AuthorizationPage() {
     const navigate = useNavigate();
