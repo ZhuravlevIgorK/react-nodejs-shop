@@ -21,3 +21,4 @@
     - `cd ./frontend`
     - по необходимости поменять файл .env
     - `npm run build`
+PS: есть возможность запустить через Dockerfile
