@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import styles from "./TemplateControlPanelPage.module.scss";
-import { PATH } from "App";
 import {NavLink} from "react-router-dom"
 import Button from "components/Button/Button";
 import { ClassBasket } from "../../utils/ClassBasket";
 import { useBasketContext } from "../../context/BasketProvider";
+import { PATH } from "global-config";
 
 type IProps = React.PropsWithChildren<{}>;
 

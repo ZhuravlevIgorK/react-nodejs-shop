@@ -1,4 +1,5 @@
 import axios from "axios";
+import { telegram } from "global-config";
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Button from "../../../components/Button/Button";
@@ -78,12 +79,14 @@ export default function OrderPage() {
                                 alert("Не все поля заполнены")
                             }
 
-                            const links = products.map((product, index) => (`${index + 1}. <a href="http://api.app.localhost:3000/product/${product.id}">${product.title} (${product.count})</a>\n`)).join("");
+                            const links = products.map((product, index) => (`${index + 1}. <a href="${window.location.protocol}//api.app.${window.location.hostname}:${window.location.port}/list-product/${product.id}">${product.title} (${product.count})</a>\n`)).join("");
+                            
+                            alert(links)
 
                             const text = encodeURI(`
                                 <b>Заказ</b>\n${links}\nФИО: ${fio}\nemail: ${email}\nтел: ${phone}\naдрес: ${address}\n<i>${totalPrice} руб.</i>
                             `);
-                            const url = `https://api.telegram.org/bot6000664639:AAFja1BntREe2uZCwh4FWaMwvycFSPOuMGU/sendMessage?chat_id=779087014&parse_mode=html&text=${text}`
+                            const url = `${telegram}${text}`
                             
                             axios.post(url).then(() => {
                                 setIsSuccess(true);

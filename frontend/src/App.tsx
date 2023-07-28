@@ -1,3 +1,4 @@
+import { PATH } from 'global-config';
 import React, { lazy, Suspense, useEffect } from 'react';
 import {BrowserRouter, Route, Routes, Navigate, useNavigate} from "react-router-dom"
 
@@ -15,29 +16,6 @@ const NotFound404Page = lazy(() => import("pages/Shop/NotFound404Page/NotFound40
 const OrderPage = lazy(() => import("pages/Shop/OrderPage/OrderPage"))
 const ProductListPage = lazy(() => import("pages/Shop/ProductListPage/ProductListPage"))
 const ProductPage = lazy(() => import("pages/Shop/ProductPage/ProductPage"))
-
-export const PATH = {
-  SHOP: {
-    HOME: "/home",
-    CATEGORIES: "/list-categories",
-    PRODUCTS: "/list-products/:categoryId",
-    PRODUCT: "/list-product/:productId",
-    GUARANTES: "/guarantes",
-    ABOUT: "/about",
-    CONTACTS: "/contacts",
-    BASKET: "/basket",
-    ORDER: "/order",
-  },
-
-  CONTROL_PANEL: {
-    AUTH: "/control-panel/authorization",
-    REGISTRATION: "/control-panel/registration",
-    CATEGORIES: "/control-panel/categories",
-    PRODUCTS: "/control-panel/products",
-  }  
-  
-}
-
 
 function App() {
   const isAuth = localStorage.getItem("isAuth");
