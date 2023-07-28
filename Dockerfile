@@ -10,6 +10,7 @@ RUN npm run build --prefix /react-app/frontend
 FROM nginx:1.19
 COPY ./frontend/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /react-app/frontend/build /usr/share/nginx/html
+ENTRYPOINT bash -c 'nginx -g "daemon off;"'
 
 # backend
-RUN npm run start --prefix ./react-app/backend
+# RUN npm run start --prefix /react-app/backend
